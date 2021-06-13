@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-ovveride")
 const mongoose = require("mongoose");
 const _ = require("lodash");
 
@@ -8,6 +9,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 app.use(express.static("public"));
 
 mongoose.connect("mongodb+srv://DaaddyJi:Rhituraj1999@todolist.e8kpb.mongodb.net/todolistDB" ,{useNewUrlParser:true ,useUnifiedTopology: true});
@@ -86,7 +88,7 @@ app.post("/", function(req, res){
 //end
 
 //for deleting items
-app.post("/delete" ,function (req,res) {
+app.delete("/delete" ,function (req,res) {
   const checkItemId = req.body.Checkbox;
   const listName = req.body.ListName;
 

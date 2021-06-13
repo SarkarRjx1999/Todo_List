@@ -93,7 +93,7 @@ app.post("/delete" ,function (req,res) {
   const listName = req.body.ListName;
 
   if(listName==="Today"){
-    Item.findByIdAndRemove(checkItemId,function (err) {
+    Item.findByIdAndDelete(checkItemId,function (err) {
       if(!err){
       console.log("Deleted");
       res.redirect("/");

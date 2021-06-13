@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const methodOverride = require("method-ovveride")
+const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 
@@ -88,12 +88,12 @@ app.post("/", function(req, res){
 //end
 
 //for deleting items
-app.delete("/delete" ,function (req,res) {
+app.post("/delete" ,function (req,res) {
   const checkItemId = req.body.Checkbox;
   const listName = req.body.ListName;
 
   if(listName==="Today"){
-    Item.findByIdAndDelete(checkItemId,function (err) {
+    Item.findByIdAndRemove(checkItemId,function (err) {
       if(!err){
       console.log("Deleted");
       res.redirect("/");

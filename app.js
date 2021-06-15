@@ -121,7 +121,7 @@ app.get("/:customList",function (req,res) {
   if(!err ){
     if(!foundList)
     {
-     //Create a newe list
+     //Create a new list
       const lists = new List({
       name : CustomList,
       items : defaultItems
